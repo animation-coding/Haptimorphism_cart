@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Product Card</title>
+    <!--::::::::--flaticon--:::::::-->
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+
+    <link rel="stylesheet" href="css.css">
+
+
+
+</head>
+
+<body>
+    <div class="product-card">
+
+
+        <div class="logo-cart">
+            <div class="back">
+                <i class="fi fi-sr-angle-left"></i>
+                <span>back</span>
+            </div>
+            <i class="fi fi-rr-shopping-cart"></i>
+        </div>
+
+
+        <div class="main-images">
+            <img id="white" class="white active" src="white.png" alt="white">
+            <img id="blue" class="blue" src="blue.png" alt="blue">
+            <img id="white" class="black" src="black.png" alt="black">
+        </div>
+
+        <div class="shows-details">
+            <span class="shows_name">iphone 13 pro max</span>
+        </div>
+
+        <div class="color-price">
+            <div class="color-option">
+                <span class="color">color</span>
+                <div class="circles">
+                    <span class="circle white active" id="white"></span>
+                    <span class="circle blue" id="blue"></span>
+                    <span class="circle black" id="black"></span>
+                </div>
+            </div>
+            <div class="price">
+                <span class="price_num">680$</span>
+            </div>
+        </div>
+
+        <div class="button">
+            <button>Add to Cart</button>
+        </div>
+    </div>
+
+    <!--::::--gsap--:::::-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+
+    <script>
+        let circle = document.querySelector(".color-option");
+
+        circle.addEventListener("click", (e) => {
+            let target = e.target;
+            if (target.classList.contains("circle")) {
+                circle.querySelector(".active").classList.remove("active");
+                target.classList.add("active");
+                document.querySelector(".main-images .active").classList.remove("active");
+                document.querySelector(`.main-images .${target.id}`).classList.add("active");
+            }
+        });
+
+        //Animation
+        gsap.from(".logo-cart",
+            {
+                opacity: 0,
+                duration: 1,
+                delay: 0.8,
+                y: -25,
+                ease: "expo.out",
+                stagger: 0.2,
+
+            });
+
+        gsap.from(".main-images",
+            {
+                opacity: 0,
+                duration: 2,
+                delay: 1,
+                y: -25,
+                ease: "expo.out",
+                stagger: 0.2,
+
+            });
+        gsap.from(".shows_name",
+            {
+                opacity: 0,
+                duration: 2,
+                delay: 1.5,
+                y: -25,
+                ease: "expo.out",
+                stagger: 0.2,
+
+            });
+        gsap.from(".color-price",
+            {
+                opacity: 0,
+                duration: 1.8,
+                delay: 1.8,
+                y: -25,
+                ease: "expo.out",
+                stagger: 0.2,
+
+            });
+        gsap.from(".button",
+            {
+                opacity: 0,
+                duration: 2,
+                delay: 2,
+                y: 25,
+                ease: "expo.out",
+                stagger: 0.2,
+
+            });
+
+    </script>
+</body>
+
+</html>

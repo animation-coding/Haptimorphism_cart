@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Responsive Animated Product Card </title>
+
+    <!-- Boxicons CDN Link -->
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        /* Google Fonts Poppins */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e1e1e1;
+        }
+
+        .product-card {
+            position: relative;
+            max-width: 390px;
+            width: 100%;
+            border-radius: 18px;
+            padding: 20px 30px 30px 30px;
+            background: #e1e1e1;
+            box-shadow:
+                -28px 27px 37.5px rgba(0, 0, 0, 0.53),
+                10px -19px 37.5px rgb(255 255 255),
+                inset 4px -4px 8px rgb(0, 0, 0, 0.53),
+                inset -5px 5px 12px #ffffff;
+            z-index: 3;
+            overflow: hidden;
+        }
+
+        .product-card .logo-cart {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .product-card .logo-cart .back i {
+            font-size: 20px;
+            color: #0899ee;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: -5px 3px 4px rgba(0, 0, 0, 0.431);
+        }
+
+        .product-card .logo-cart .back span {
+            font-size: 22px;
+            font-weight: 600;
+            margin-left: 9px;
+            color: #404040;
+
+        }
+
+        .product-card .logo-cart i {
+            font-size: 27px;
+            color: #0899ee;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: -5px 3px 4px rgba(0, 0, 0, 0.431);
+        }
+
+        .product-card .logo-cart i:hover {
+            color: #333;
+        }
+
+        .product-card .main-images {
+            position: relative;
+            height: 400px;
+        }
+
+        .product-card .main-images img {
+            position: absolute;
+            height: 270px;
+            width: 208px;
+            object-fit: cover;
+            left: 62px;
+            top: 35px;
+            border-radius: 25px;
+            z-index: 1;
+            opacity: 0;
+            transition: transform 0.5s ease;
+            box-shadow: -13px 20px 20px rgb(51 51 51 / 59%);
+        }
+
+        .product-card .main-images img.active {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .product-card .shows-details .shows_name {
+            font-size: 24px;
+            font-weight: bolder;
+            color: #3d3d3d;
+        }
+
+
+        .product-card .color-price .color-option {
+            display: flex;
+            align-items: center;
+        }
+
+        .color-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .color-price .color-option .color {
+            font-size: 18px;
+            font-weight: bold;
+            color: #3d3d3d;
+            margin-right: 8px;
+        }
+
+        .color-option .circles {
+            display: flex;
+            align-items: center;
+        }
+
+        .color-option .circles .circle {
+            height: 18px;
+            width: 18px;
+            background: #ffffff;
+            border-radius: 50%;
+            margin: 0 6px;
+            box-shadow: inset 4px -4px 5px rgb(0 0 0 / 49%), -5px 5px 10px rgb(0 0 0 / 70%);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .color-option .circles .circle.white.active {
+            height: 24px;
+            width: 24px;
+            background: #ffffff;
+            box-shadow: inset 5px -4px 6px rgb(0 0 0 / 39%), -10px 10px 15px rgb(0 0 0 / 49%);
+        }
+
+        .color-option .circles .circle.blue {
+            background: #2f68f6;
+        }
+
+        .color-option .circles .circle.blue.active {
+            height: 24px;
+            width: 24px;
+            background: #2f68f6;
+            box-shadow:
+                inset 5px -4px 6px rgb(0 0 0 / 50%),
+                -10px 10px 15px rgb(0 0 0 / 49%);
+        }
+
+        .color-option .circles .circle.black {
+            background: #3d3d3d;
+        }
+
+        .color-option .circles .circle.black.active {
+            height: 24px;
+            width: 23px;
+            background: #3d3d3d;
+            box-shadow: inset 5px -4px 6px rgb(0 0 0 / 69%), -10px 10px 15px rgb(0 0 0 / 49%);
+        }
+
+        .color-price .price {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .color-price .price .price_num {
+            font-size: 30px;
+            font-weight: 700;
+            color: #3d3d3d;
+        }
+
+
+
+
+        /* box-shadow:
+                -1px 3px 0px 0px #1d3856,
+                4px -4px 10px white,
+                -6px 9px 9px 0px #2c2c2c; */
+
+
+
+
+        .product-card .button button {
+            height: 60px;
+            width: 80%;
+            border-radius: 50px;
+            margin: 34px;
+            background: #0899ee;
+            outline: none;
+            border: none;
+            font-size: 22px;
+            font-weight: 600;
+            color: #e2e2e1;
+            transition: all 0.4s ease;
+            text-shadow:
+                2px 2px 4px rgba(46, 46, 46, 0.949),
+                -2px -2px 4px #70bcff;
+            box-shadow:
+                inset 2px -3px 3px 0px rgb(5 78 127),
+                -5px 4px 7px 0px rgb(0 0 0 / 75%),
+                3px -4px 10px 1px rgb(255 255 255);
+
+        }
+
+        button:hover {
+            transform: translateY(-5px) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product-card">
+        <div class="logo-cart">
+            <div class="back">
+                <i class="fi fi-sr-angle-left"></i>
+                <span>Back </span>
+            </div>
+            <i class="fi fi-rr-shopping-cart"></i>
+        </div>
+        <div class="main-images">
+            <img id="white" class="white active" src="white.png" alt="white">
+            <img id="blue" class="blue" src="blue.png" alt="white">
+            <img id="black" class="black" src="black.png" alt="white">
+        </div>
+        <div class="shows-details">
+            <span class="shows_name">iphone 13 pro max</span>
+        </div>
+        <div class="color-price">
+            <div class="color-option">
+                <span class="color">Color</span>
+                <div class="circles">
+                    <span class="circle white active" id="white"></span>
+                    <span class="circle blue " id="blue"></span>
+                    <span class="circle black " id="black"></span>
+                </div>
+            </div>
+            <div class="price">
+                <span class="price_num">680$</span>
+            </div>
+        </div>
+        <div class="button">
+            <button>Add To Cart</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script>
+        let circle = document.querySelector(".color-option");
+
+        circle.addEventListener("click", (e) => {
+            let target = e.target;
+            if (target.classList.contains("circle")) {
+                circle.querySelector(".active").classList.remove("active");
+                target.classList.add("active");
+                document.querySelector(".main-images .active").classList.remove("active");
+                document.querySelector(`.main-images .${target.id}`).classList.add("active");
+            }
+        });
+
+        // Animations
+        gsap.from(".logo-cart", {
+            opacity: 0,
+            duration: 1,
+            delay: 0.8,
+            y: -25,
+            ease: "expo.out",
+            stagger: 0.2,
+        });
+
+
+        gsap.from(".main-images", {
+            opacity: 0,
+            duration: 2,
+            delay: 1,
+            y: 25,
+            ease: "expo.out",
+            stagger: 0.2,
+        });
+
+        gsap.from(".shows_name", {
+            opacity: 0,
+            duration: 1.8,
+            delay: 1.5,
+            y: -25,
+            ease: "expo.out",
+            stagger: 0.2,
+        });
+
+        gsap.from(".color-price", {
+            opacity: 0,
+            duration: 1.8,
+            delay: 1.8,
+            y: -25,
+            ease: "expo.out",
+            stagger: 0.2,
+        });
+
+        gsap.from("button", {
+            opacity: 0,
+            duration: 2,
+            delay: 2,
+            y: 25,
+            ease: "expo.out",
+            stagger: 0.2,
+        });
+
+    </script>
+
+
+</body>
+
+</html>
